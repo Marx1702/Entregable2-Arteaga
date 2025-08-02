@@ -1,0 +1,178 @@
+body {
+  background-color: #f5f5f5;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar principal */
+.navbar {
+  background-color: white;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Enlaces de navegación */
+.nav-left a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-left a:hover {
+  color: #6b21a8; /* violeta */
+}
+
+/* Botón de login */
+.login-button {
+  background-color: #7c3aed; /* violeta */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  background-color: #6b21a8;
+}
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #222;
+  color: #fff;
+  flex-wrap: wrap; /* Permite que los elementos bajen si no entran */
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-left,
+  .nav-right {
+    flex-direction: column;
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .nav-left a,
+  .nav-right a {
+    padding: 8px 0;
+    width: 100%;
+    text-align: left;
+  }
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #222;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: relative;
+}
+
+/* Logo */
+.nav-left.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Botón hamburguesa - oculto en desktop */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Links - visibles en desktop */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Links estilo */
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive: en pantallas pequeñas */
+@media (max-width: 768px) {
+  /* Mostrar botón hamburguesa */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Ocultar links por defecto */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #222;
+    position: absolute;
+    top: 55px;
+    left: 0;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+
+  /* Mostrar links cuando activo */
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 10px 20px;
+    border-top: 1px solid #444;
+  }
+
+  .nav-links a:first-child {
+    border-top: none;
+  }
+}

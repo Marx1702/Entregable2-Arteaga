@@ -1,0 +1,3 @@
+En este proyecto simularemos un turnero para un taller mecanico,en esta instancia podemos ejecutar el index.html con live server ,tenemos tanto la logica como las redirecciones creadas para login y register.
+Se nos proporciona mensajes a traves de alerts,acerca de la condicion del proceso que estamos realizando (Por ejemplo:el registro del usuario,el intento de inicio de sesion.).
+En la vista index.html podemos realizar click sobre el boton servicios del navbar para realizar un console log del array de objetos creados en services.
