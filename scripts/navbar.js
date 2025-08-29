@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Helpers
+  
   const getActiveUser = () => {
     try { return JSON.parse(localStorage.getItem("activeUser")); }
     catch { return null; }
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const li = a.closest("li");
       (li || a).remove();
     });
-  };
+  }; //Si no hay una sesion iniciada la opcion de turnos del navbar no se muestra
 
   const createLiLink = (href, text) => {
     const li = document.createElement("li");
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const insertAfter = (newNode, referenceNode) => {
     if (!referenceNode || !referenceNode.parentNode) return;
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-  };
+  }; 
 
   // --- Lógica de sesión ---
   const user = getActiveUser();

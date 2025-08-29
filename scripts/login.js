@@ -1,7 +1,7 @@
 // Cargar usuarios desde localStorage
 const users = JSON.parse(localStorage.getItem("users")) || [];
 
-function loginUser(userFound) {
+function loginUser(userFound) { 
   if (userFound) {
     alert(`Bienvenido, ${userFound.nombre}`);
     console.log(`Bienvenido, ${userFound.nombre}`);

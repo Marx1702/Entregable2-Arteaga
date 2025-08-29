@@ -1,6 +1,6 @@
 // /scripts/services.js
 document.addEventListener("DOMContentLoaded", () => {
-  // Catálogo (si ya lo cargás en otro lado, podés leerlo desde localStorage)
+  // Catálogo 
   const services = [
     { id: 1, name: "Mecánica General", description: "Reparaciones y mantenimiento de vehículos.", image: "/assets/images/services/mecanica general.jpg" },
     { id: 2, name: "Cambio de Aceite", description: "Servicio rápido y eficiente de lubricación.", image: "/assets/images/services/cambio de aceite.jpg" },
