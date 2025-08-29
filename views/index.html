@@ -2,32 +2,105 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Turnos Mecánico</title>
-  <link rel="stylesheet" href="/styles/body.css"> <!-- asegurate que la ruta esté bien -->
-  <script src="/scripts/navbar.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Turners – Taller Mecánico</title>
+  <link rel="stylesheet" href="/styles/body.css" />
+  <script src="/scripts/navbar.js" defer></script>
+  <script src="/scripts/home.js" defer></script>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-  <div class="nav-left logo">Turners</div>
+  <!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="logo" aria-label="Ir al inicio">
+    <img src="/assets/images/turners.png" alt="Turners" class="logo-img">
+  </a>
 
   <button class="menu-toggle" id="menuToggle">&#9776;</button>
 
-  <div class="nav-links" id="navLinks">
-    <a href="#servicios" id="verServicios">Servicios</a>
-    <a href="#turnos">Turnos</a>
-    <a href="#nosotros">Sobre Nosotros</a>
-    <a href="login.html" class="login-button">Iniciar sesión</a>
-  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="services.html">Servicios</a></li>
+    <li><a href="login.html" id="authLink" class="login-button">Iniciar sesión</a></li>
+  </ul>
 </nav>
 
 
-<h1>Turnos Mecánico</h1>
-<h2>Resumen:</h2>
-  Este proyecto propone una solución integral para la administración y planificación en el ámbito de la mecánica, permitiendo gestionar servicios con control preciso del tiempo requerido para cada uno. La plataforma facilita la organización eficiente de turnos y recursos, optimizando los procesos operativos del taller.
-  </section>
-<script src="/scripts/services.js"></script>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__content">
+        <h1>Mantenimiento y reparación con turnos inteligentes</h1>
+        <p>
+          Organizá tus servicios mecánicos con reservas online y tiempos claros.
+          Con Turners, tu taller y tus clientes trabajan mejor.
+        </p>
+        <div class="hero__cta">
+          <a href="services.html" class="btn btn-primary">Ver Servicios</a>
+          <a href="#" id="ctaReservar" class="btn btn-outline">Reservar Turno</a>
+        </div>
+      </div>
+      <div class="hero__media" aria-hidden="true">
+        <img src="/assets/images/taller-generico.jpeg" alt="Auto en mantenimiento">
+      </div>
+    </section>
+
+    <!-- FEATURES (envueltas en contenedor .features para controlar nth-child) -->
+    <section class="features">
+
+      <!-- 1: texto izq / imagen der -->
+      <section class="feature obs">
+        <div class="feature__text">
+          <h2>Mecánica General</h2>
+          <p>Diagnóstico, reparación y mantenimiento preventivo.</p>
+          <ul class="feature__bullets">
+            <li>Chequeo de sistemas clave</li>
+            <li>Mantenimiento según plan del fabricante</li>
+            <li>Historial de servicios</li>
+          </ul>
+          <a class="link" href="services.html">Conocer más →</a>
+        </div>
+        <div class="feature__media">
+          <img src="/assets/images/services/mecanica general.jpg" alt="Mecánica general">
+        </div>
+      </section>
+
+      <!-- 2: imagen izq / texto der (lo hace el CSS con :nth-child(even)) -->
+      <section class="feature obs">
+        <div class="feature__text">
+          <h2>Cambio de Aceite</h2>
+          <p>Servicio rápido con insumos de calidad y agenda flexible.</p>
+          <ul class="feature__bullets">
+            <li>Aceites y filtros de primeras marcas</li>
+            <li>Franjas horarias</li>
+            <li>Recordatorios automáticos</li>
+          </ul>
+          <a class="link" href="services.html">Conocer más →</a>
+        </div>
+        <div class="feature__media">
+          <img src="/assets/images/services/cambio de aceite.jpg" alt="Cambio de aceite">
+        </div>
+      </section>
+
+      <!-- 3: texto izq / imagen der -->
+      <section class="feature obs">
+        <div class="feature__text">
+          <h2>Alineación y Balanceo</h2>
+          <p>Seguridad y confort en ruta con equipamiento calibrado.</p>
+          <ul class="feature__bullets">
+            <li>Menor desgaste de neumáticos</li>
+            <li>Estabilidad a altas velocidades</li>
+            <li>Chequeo de suspensión</li>
+          </ul>
+          <a class="link" href="services.html">Conocer más →</a>
+        </div>
+        <div class="feature__media">
+          <img src="/assets/images/services/alineacion y balanceo.jpg" alt="Alineación y balanceo">
+        </div>
+      </section>
+
+    </section>
+  </main>
+
 </body>
 </html>

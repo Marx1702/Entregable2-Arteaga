@@ -1,178 +1,278 @@
-body {
-  background-color: #f5f5f5;
-  margin: 0;
-  font-family: Arial, sans-serif;
+/* === Fix global: que ninguna imagen se deforme ni desborde === */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* Navbar principal */
-.navbar {
-  background-color: white;
-  padding: 16px 24px;
-  display: flex;
-  justify-content: space-between;
+/* === Feature media: proporción controlada y recorte elegante === */
+.feature__media {
+  width: 100%;
+}
+
+.feature__media img {
+  width: 100%;
+  height: auto;           /* base: mantiene proporción natural */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
+
+@media (min-width: 993px) {
+  .feature__media img {
+    height: auto; 
+  }
+}
+
+
+
+
+
+/* Evitar deformaciones globales */
+img { max-width: 100%; height: auto; display: block; }
+
+/* Contenedor de las secciones de features:
+   así :nth-child(even) solo cuenta a .feature dentro de .features */
+.features { margin-top: 40px; }
+
+/* Layout base de cada feature */
+.feature {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text media";   /* por defecto: texto izq, imagen der */
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-top: 56px;
+}
+.feature .feature__text  { grid-area: text; }
+.feature .feature__media { grid-area: media; }
+
+/* Zig-zag automático: pares invierten */
+.features > .feature:nth-child(even) {
+  grid-template-areas: "media text";
 }
 
-/* Enlaces de navegación */
-.nav-left a {
-  margin-right: 20px;
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
+/* Tamaño visual consistente de las imágenes (desktop) */
+@media (min-width: 993px) {
+  .feature__media img {
+    aspect-ratio: 16 / 10;  
+    object-fit: cover;   
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  }
 }
 
-.nav-left a:hover {
-  color: #6b21a8; /* violeta */
+/* En móviles se apila todo y la imagen ocupa su tamaño natural */
+@media (max-width: 992px) {
+  .feature {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "text"
+      "media";
+  }
+  .features > .feature:nth-child(even) {
+    grid-template-areas:
+      "text"
+      "media";
+  }
+  .feature__media img {
+    aspect-ratio: auto;      /* mostramos la imagen completa en mobile */
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  }
 }
 
-/* Botón de login */
-.login-button {
-  background-color: #7c3aed; /* violeta */
-  color: white;
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-}
 
-.login-button:hover {
-  background-color: #6b21a8;
-}
-/* Estilos generales */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-.navbar {
+/* ===== NAVBAR: estilo forzado y logo contenido ===== */
+body .navbar {
+  background: #ffffff00;
+  color: #000000;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 5px;
   padding: 10px 20px;
-  background-color: #222;
+  min-height: 64px;
+  position: relative;  /* para el dropdown mobile */
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+/* Logo (con <img>) — tamaño razonable */
+body .navbar .logo {
+  display: flex;
+  align-items: center;
+}
+body .navbar .logo img {
+  height: 48px;     /* <-- ajustá aquí: 44–56px */
+  width: auto;
+  display: block;
+}
+
+/* Links */
+body .navbar a {
+  color: #f5f3f3;
+  text-decoration: none;
+  font-weight: 700;
+}
+body .navbar a:hover { text-decoration: underline; }
+
+/* Botón Login destacado */
+body .navbar .login-button {
+  background-color: #7c3aed;
   color: #fff;
-  flex-wrap: wrap; /* Permite que los elementos bajen si no entran */
-}
-
-.nav-left,
-.nav-right {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.navbar a {
-  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 700;
 }
+body .navbar .login-button:hover { background: #6b21a8; }
 
-.navbar a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive para pantallas pequeñas */
-@media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-left,
-  .nav-right {
-    flex-direction: column;
-    width: 100%;
-    margin: 5px 0;
-  }
-
-  .nav-left a,
-  .nav-right a {
-    padding: 8px 0;
-    width: 100%;
-    text-align: left;
-  }
-}
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-.navbar {
-  background-color: #222;
-  color: white;
+/* Contenedor de enlaces */
+body .navbar .nav-links {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  position: relative;
+  gap: 18px;
 }
 
-/* Logo */
-.nav-left.logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-/* Botón hamburguesa - oculto en desktop */
-.menu-toggle {
+/* Hamburguesa (solo mobile) */
+body .navbar .menu-toggle {
   display: none;
   font-size: 1.8rem;
   background: none;
   border: none;
-  color: white;
+  color: #f9f9f9;
   cursor: pointer;
 }
 
-/* Links - visibles en desktop */
-.nav-links {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-/* Links estilo */
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive: en pantallas pequeñas */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  /* Mostrar botón hamburguesa */
-  .menu-toggle {
-    display: block;
-  }
+  body .navbar .menu-toggle { display: block; }
 
-  /* Ocultar links por defecto */
-  .nav-links {
+  body .navbar .nav-links {
     display: none;
     flex-direction: column;
     width: 100%;
-    background-color: #222;
+    background: #5e5e5e;
     position: absolute;
-    top: 55px;
+    top: 100%;   /* cae justo debajo del navbar */
     left: 0;
+    right: 0;
     padding: 10px 0;
     z-index: 1000;
   }
+  body .navbar .nav-links.show { display: flex; }
 
-  /* Mostrar links cuando activo */
-  .nav-links.show {
-    display: flex;
-  }
-
-  .nav-links a {
+  body .navbar .nav-links a {
     padding: 10px 20px;
-    border-top: 1px solid #444;
+    width: 100%;
+    border-top: 1px solid #ffffff;
   }
+  body .navbar .nav-links a:first-child { border-top: none; }
 
-  .nav-links a:first-child {
-    border-top: none;
+  /* Logo un poco más chico en móvil */
+  body .navbar .logo img { height: 40px; }
+}
+
+/* =========================
+   HERO: imagen menos invasiva
+========================= */
+
+/* Reduce el peso visual: el texto ocupa más, la imagen menos */
+.hero {
+  grid-template-columns: 1.3fr 0.7fr; /* antes 1.1fr / 1fr */
+}
+
+/* Limitar tamaño de la imagen del hero en desktop */
+.hero__media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero__media img {
+  width: 100%;
+  max-width: 520px;      /* límite de ancho */
+  max-height: 320px;     /* límite de alto */
+  aspect-ratio: 16 / 10; /* marco consistente */
+  object-fit: cover;     /* recorte elegante sin deformar */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.1);
+}
+
+/* En pantallas medianas reducimos aún más la imagen */
+@media (max-width: 992px) {
+  .hero { grid-template-columns: 1fr; } /* apila */
+  .hero__media img {
+    max-width: 440px;
+    max-height: 260px;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
   }
 }
+
+/* En móvil: imagen aún más contenida */
+@media (max-width: 600px) {
+  .hero__media img {
+    max-width: 360px;
+    max-height: 220px;
+  }
+}
+
+/* =========================
+   BOTONES: estilo unificado
+========================= */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1;
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease, color .12s ease, border-color .12s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  border: 2px solid transparent; /* base para outline */
+  cursor: pointer;
+}
+
+/* Hover / Active / Focus accesibles */
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+.btn:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(0,0,0,.10); }
+.btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(124,58,237,.25); }
+
+/* Primario */
+.btn-primary {
+  background: #7c3aed; /* violeta */
+  color: #fff;
+  border-color: #7c3aed;
+}
+.btn-primary:hover  { background: #6b21a8; border-color: #6b21a8; }
+.btn-primary:active { background: #5b1999; border-color: #5b1999; }
+
+/* Contorno */
+.btn-outline {
+  background: transparent;
+  color: #7c3aed;
+  border-color: #7c3aed;
+}
+.btn-outline:hover  { color: #fff; background: #7c3aed; border-color: #7c3aed; }
+.btn-outline:active { color: #fff; background: #5b1999; border-color: #5b1999; }
+
+/* Tamaños opcionales */
+.btn.sm { padding: 8px 14px; border-radius: 8px; }
+.btn.lg { padding: 12px 22px; border-radius: 12px; }
+
+
+
+/* Logo escalable en navbar */
+.navbar .logo-img {
+  height: auto;        /* siempre mantiene proporción */
+  width: auto;
+  max-height: 50px;   /* límite superior para que no rompa el navbar */
+  cursor: pointer;
+}
+
+/* Fondo negro para toda la app */
+body {
+  background: #000 !important;   /* negro sólido */
+  color: #fff;                   /* texto blanco por defecto (opcional) */
+}
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Turnos</title>
+  <link rel="stylesheet" href="/styles/body.css" />
+  <link rel="stylesheet" href="/styles/turnos.css" />
+  <script src="/scripts/navbar.js" defer></script>
+  <script src="/scripts/turnos.js" defer></script>
+</head>
+<body>
+
+  <!-- Navbar (sin "Turnos" estático; lo maneja navbar.js según sesión) -->
+  <nav class="navbar">
+    <a href="index.html" class="logo" aria-label="Ir al inicio">
+    <img src="/assets/images/turners.png" alt="Turners" class="logo-img">
+  </a>
+    <div class="nav-left logo">Turners</div>
+    <button class="menu-toggle" id="menuToggle">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="services.html">Servicios</a></li>
+      <li><a href="login.html" id="authLink" class="login-button">Iniciar sesión</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1>Gestión de Turnos</h1>
+
+    <!-- Crear turno -->
+    <section class="card" aria-labelledby="crear-turno">
+      <h2 id="crear-turno">Nuevo turno</h2>
+
+      <form id="turnoForm" class="form-turnos">
+        <div class="field field--servicio">
+          <label for="servicio">Servicio</label>
+          <select id="servicio" required>
+            <option value="">Seleccionar servicio...</option>
+          </select>
+        </div>
+
+        <div class="field field--fecha">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" required />
+        </div>
+
+        <div class="field field--hora">
+          <label for="hora">Hora</label>
+          <select id="hora" required disabled>
+            <option value="">Selecciona fecha y servicio...</option>
+          </select>
+        </div>
+
+        <div class="field field--cliente">
+          <label for="cliente">Cliente</label>
+          <input type="text" id="cliente" placeholder="Tu nombre" required />
+        </div>
+
+        <div class="field field--btn">
+          <button type="submit">Guardar turno</button>
+        </div>
+      </form>
+
+      <p class="muted" id="usuarioActual"></p>
+    </section>
+
+    <!-- Tabla -->
+    <section class="table-wrap card" style="margin-top:1rem">
+      <table aria-describedby="subtitulo-turnos">
+        <caption id="subtitulo-turnos" class="muted" style="caption-side: bottom; padding-top:.5rem;">
+          Solo se muestran tus turnos.
+        </caption>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Servicio</th>
+            <th>Cliente</th>
+            <th class="actions">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="turnosBody"><!-- dinámico --></tbody>
+      </table>
+    </section>
+  </main>
+
+</body>
+</html>

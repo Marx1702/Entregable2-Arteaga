@@ -1,0 +1,75 @@
+/* Reset de caja para evitar desbordes */
+*, *::before, *::after { box-sizing: border-box; }
+
+.container { max-width: 980px; margin: 2rem auto; padding: 0 1rem; }
+.card { background: #9b59b6; border-radius: 12px; padding: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,.08); }
+
+/* FORM LAYOUT con Grid de 12 columnas */
+.form-turnos {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas:
+    "servicio servicio servicio servicio fecha fecha hora hora cliente cliente btn btn";
+  align-items: end;
+}
+
+/* Campos */
+.field { min-width: 0; }
+.field label { display: block; font-weight: 600; margin-bottom: .4rem; }
+.field input, .field select {
+  width: 100%;
+  min-width: 0;
+  padding: .6rem .7rem;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+/* Ubicación por áreas */
+.field--servicio { grid-area: servicio; }
+.field--fecha    { grid-area: fecha; }
+.field--hora     { grid-area: hora; }
+.field--cliente  { grid-area: cliente; }
+.field--btn      { grid-area: btn; display: flex; align-items: flex-end; }
+
+.form-turnos button[type="submit"] {
+  width: 100%;
+  padding: .7rem 1rem;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  background:#5ccb43; color:#ffffff;
+}
+
+.muted { color: #000000; }
+
+/* Tabla */
+.table-wrap { overflow-x: auto; margin-top: 1rem; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+thead th { text-align: left; background:#000000; }
+th, td { padding: .65rem .6rem; border-bottom: 1px solid #080808; }
+.actions button { border: 0; background: transparent; cursor: pointer; text-decoration: underline; }
+
+/* BREAKPOINTS */
+/* Tablet */
+@media (max-width: 992px) {
+  .form-turnos {
+    grid-template-areas:
+      "servicio servicio servicio servicio cliente cliente cliente cliente btn btn btn btn"
+      "fecha fecha fecha hora hora hora btn btn btn btn btn btn";
+  }
+}
+
+/* Móvil */
+@media (max-width: 600px) {
+  .form-turnos {
+    grid-template-areas:
+      "servicio servicio servicio servicio servicio servicio servicio servicio servicio servicio servicio servicio"
+      "cliente  cliente  cliente  cliente  cliente  cliente  cliente  cliente  cliente  cliente  cliente  cliente"
+      "fecha    fecha    fecha    fecha    fecha    fecha    fecha    fecha    fecha    fecha    fecha    fecha"
+      "hora     hora     hora     hora     hora     hora     hora     hora     hora     hora     hora     hora"
+      "btn      btn      btn      btn      btn      btn      btn      btn      btn      btn      btn      btn";
+  }
+}
